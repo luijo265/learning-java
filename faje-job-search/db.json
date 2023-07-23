@@ -1,0 +1,246 @@
+{
+    "jobs":[
+        {
+          "id": "f29e2b1c-1f0c-4da7-98a3-8a3d1ab9f809",
+          "type": "Tiempo completo",
+          "url": "https://www.fakejobsite.com/job/f29e2b1c",
+          "createdAt": "2023-07-23T10:00:00",
+          "company": "TechGenius",
+          "companyUrl": "https://www.techgenius.com",
+          "location": "New York, USA",
+          "title": "Java Software Engineer",
+          "description": "<p>We are looking for a skilled Java Software Engineer to join our team...</p>"
+        },
+        {
+          "id": "1e46b1c0-681f-4aa7-89d1-670207a2f1bb",
+          "type": "Por horas",
+          "url": "https://www.fakejobsite.com/job/1e46b1c0",
+          "createdAt": "2023-07-22T15:30:00",
+          "company": "Pythonic Solutions",
+          "companyUrl": "https://www.pythonicsolutions.com",
+          "location": "San Francisco, USA",
+          "title": "Python Web Developer",
+          "description": "<p>We are seeking a passionate Python Web Developer to work on exciting projects...</p>"
+        },
+        {
+          "id": "2e3d1bf7-9c4d-4326-b183-9e4f439c051a",
+          "type": "Medio Tiempo",
+          "url": "https://www.fakejobsite.com/job/2e3d1bf7",
+          "createdAt": "2023-07-21T09:45:00",
+          "company": "NodeJS Innovations",
+          "companyUrl": "https://www.nodejsinnovations.com",
+          "location": "London, UK",
+          "title": "Node.js Backend Developer",
+          "description": "<p>Join our dynamic team as a Node.js Backend Developer to create robust APIs...</p>"
+        },
+        {
+          "id": "49fe2a3b-1d8f-4c6e-8d3f-4126813d1a44",
+          "type": "Tiempo completo",
+          "url": "https://www.fakejobsite.com/job/49fe2a3b",
+          "createdAt": "2023-07-20T13:15:00",
+          "company": "DataTech Solutions",
+          "companyUrl": "https://www.datatechsolutions.com",
+          "location": "Berlin, Germany",
+          "title": "Data Scientist",
+          "description": "<p>Looking for a skilled Data Scientist to analyze and interpret complex data...</p>"
+        },
+        {
+          "id": "7845a1c7-4d82-4a29-9d39-dcf051e70b07",
+          "type": "Por horas",
+          "url": "https://www.fakejobsite.com/job/7845a1c7",
+          "createdAt": "2023-07-19T08:30:00",
+          "company": "AI Innovations",
+          "companyUrl": "https://www.aiinnovations.com",
+          "location": "Tokyo, Japan",
+          "title": "Machine Learning Engineer",
+          "description": "<p>Join our AI team as a Machine Learning Engineer to develop cutting-edge algorithms...</p>"
+        },
+        {
+          "id": "092e8f17-79b9-46bf-97c9-e4e7cc4d3ebf",
+          "type": "Medio Tiempo",
+          "url": "https://www.fakejobsite.com/job/092e8f17",
+          "createdAt": "2023-07-18T11:00:00",
+          "company": "CodeCrafters",
+          "companyUrl": "https://www.codecrafters.com",
+          "location": "Toronto, Canada",
+          "title": "Frontend Web Developer",
+          "description": "<p>Looking for a Frontend Web Developer to create beautiful and responsive interfaces...</p>"
+        },
+        {
+          "id": "b1c8c1af-9e96-4627-9ac3-6414a731e13f",
+          "type": "Tiempo completo",
+          "url": "https://www.fakejobsite.com/job/b1c8c1af",
+          "createdAt": "2023-07-17T14:45:00",
+          "company": "CloudTech Solutions",
+          "companyUrl": "https://www.cloudtechsolutions.com",
+          "location": "Sydney, Australia",
+          "title": "Cloud Infrastructure Specialist",
+          "description": "<p>Seeking a Cloud Infrastructure Specialist to design and manage cloud-based systems...</p>"
+        },
+        {
+          "id": "934b58ac-8201-45f7-9f26-7d3df8f0b100",
+          "type": "Por horas",
+          "url": "https://www.fakejobsite.com/job/934b58ac",
+          "createdAt": "2023-07-16T09:30:00",
+          "company": "JavaGurus",
+          "companyUrl": "https://www.javagurus.com",
+          "location": "Singapore",
+          "title": "Java Spring Developer",
+          "description": "<p>Join our team of Java Spring Developers to build scalable and efficient applications...</p>"
+        },
+        {
+          "id": "5b1c3e11-6ca9-4d5d-af48-92b5b261a55a",
+          "type": "Medio Tiempo",
+          "url": "https://www.fakejobsite.com/job/5b1c3e11",
+          "createdAt": "2023-07-15T12:15:00",
+          "company": "WebWizards",
+          "companyUrl": "https://www.webwizards.com",
+          "location": "San Francisco, USA",
+          "title": "Full Stack Web Developer",
+          "description": "<p>Looking for a Full Stack Web Developer to create and maintain web applications...</p>"
+        },
+        {
+          "id": "c7868dc4-9a36-4f1f-8b80-5d8a11d4f6c9",
+          "type": "Tiempo completo",
+          "url": "https://www.fakejobsite.com/job/c7868dc4",
+          "createdAt": "2023-07-14T15:45:00",
+          "company": "Python Masters",
+          "companyUrl": "https://www.pythonmasters.com",
+          "location": "Berlin, Germany",
+          "title": "Python Data Analyst",
+          "description": "<p>We are seeking a Python Data Analyst to extract and analyze data...</p>"
+        },
+        {
+          "id": "32eb134c-91a9-4b63-9f96-1d72cfc9de56",
+          "type": "Por horas",
+          "url": "https://www.fakejobsite.com/job/32eb134c",
+          "createdAt": "2023-07-13T11:30:00",
+          "company": "NodeCraft",
+          "companyUrl": "https://www.nodecraft.com",
+          "location": "London, UK",
+          "title": "Node.js Developer",
+          "description": "<p>Join our team of skilled Node.js Developers to build efficient server-side applications...</p>"
+        },
+        {
+          "id": "8f2d9c14-2734-48c8-8126-d11e8c799b15",
+          "type": "Medio Tiempo",
+          "url": "https://www.fakejobsite.com/job/8f2d9c14",
+          "createdAt": "2023-07-12T14:15:00",
+          "company": "CodeMasters",
+          "companyUrl": "https://www.codemasters.com",
+          "location": "New York, USA",
+          "title": "Software Quality Assurance",
+          "description": "<p>Seeking a Software Quality Assurance specialist to ensure high-quality software...</p>"
+        },
+        {
+          "id": "3ec0866f-7a66-46d2-bd02-7ef1ec2a3da8",
+          "type": "Tiempo completo",
+          "url": "https://www.fakejobsite.com/job/3ec0866f",
+          "createdAt": "2023-07-11T16:45:00",
+          "company": "DataTech Solutions",
+          "companyUrl": "https://www.datatechsolutions.com",
+          "location": "Sydney, Australia",
+          "title": "Big Data Engineer",
+          "description": "<p>Join our team as a Big Data Engineer to design and implement data pipelines...</p>"
+        },
+        {
+          "id": "b7498043-cd7a-43b5-9c3b-1ca73f6302d5",
+          "type": "Por horas",
+          "url": "https://www.fakejobsite.com/job/b7498043",
+          "createdAt": "2023-07-10T09:30:00",
+          "company": "AI Wizards",
+          "companyUrl": "https://www.aiwizards.com",
+          "location": "Tokyo, Japan",
+          "title": "Artificial Intelligence Specialist",
+          "description": "<p>We are seeking an AI Specialist to develop and implement advanced algorithms...</p>"
+        },
+        {
+          "id": "740786f9-33cd-4e96-9c74-8c7719b12d5b",
+          "type": "Medio Tiempo",
+          "url": "https://www.fakejobsite.com/job/740786f9",
+          "createdAt": "2023-07-09T12:15:00",
+          "company": "CodeCrafters",
+          "companyUrl": "https://www.codecrafters.com",
+          "location": "Toronto, Canada",
+          "title": "Frontend Web Developer",
+          "description": "<p>Looking for a Frontend Web Developer to create beautiful and responsive interfaces...</p>"
+        },
+        {
+          "id": "17680f0b-0957-46b2-9523-14e7a96e17b8",
+          "type": "Tiempo completo",
+          "url": "https://www.fakejobsite.com/job/17680f0b",
+          "createdAt": "2023-07-08T15:45:00",
+          "company": "CloudTech Solutions",
+          "companyUrl": "https://www.cloudtechsolutions.com",
+          "location": "London, UK",
+          "title": "Cloud Architect",
+          "description": "<p>Seeking a Cloud Architect to design and manage scalable cloud infrastructures...</p>"
+        },
+        {
+          "id": "b6900eb4-6cb5-4a0c-8832-e2b8c5e5cf69",
+          "type": "Por horas",
+          "url": "https://www.fakejobsite.com/job/b6900eb4",
+          "createdAt": "2023-07-07T11:30:00",
+          "company": "JavaGurus",
+          "companyUrl": "https://www.javagurus.com",
+          "location": "Singapore",
+          "title": "Java Spring Developer",
+          "description": "<p>Join our team of Java Spring Developers to build scalable and efficient applications...</p>"
+        },
+        {
+          "id": "fca2e5d1-35ed-473f-9fe5-8ee1552f5b95",
+          "type": "Medio Tiempo",
+          "url": "https://www.fakejobsite.com/job/fca2e5d1",
+          "createdAt": "2023-07-06T14:15:00",
+          "company": "WebWizards",
+          "companyUrl": "https://www.webwizards.com",
+          "location": "San Francisco, USA",
+          "title": "Full Stack Web Developer",
+          "description": "<p>Looking for a Full Stack Web Developer to create and maintain web applications...</p>"
+        },
+        {
+          "id": "e7d61f16-682f-49c0-aab3-2b5c08332c18",
+          "type": "Tiempo completo",
+          "url": "https://www.fakejobsite.com/job/e7d61f16",
+          "createdAt": "2023-07-05T16:45:00",
+          "company": "Python Masters",
+          "companyUrl": "https://www.pythonmasters.com",
+          "location": "Berlin, Germany",
+          "title": "Python Data Analyst",
+          "description": "<p>We are seeking a Python Data Analyst to extract and analyze data...</p>"
+        },
+        {
+          "id": "7e21f9a2-0b65-4ed2-b3b1-2c7e5c0c9265",
+          "type": "Por horas",
+          "url": "https://www.fakejobsite.com/job/7e21f9a2",
+          "createdAt": "2023-07-04T09:30:00",
+          "company": "NodeCraft",
+          "companyUrl": "https://www.nodecraft.com",
+          "location": "London, UK",
+          "title": "Node.js Developer",
+          "description": "<p>Join our team of skilled Node.js Developers to build efficient server-side applications...</p>"
+        },
+        {
+          "id": "4b2015b1-d0e4-48eb-b8ca-0f774c45fb9c",
+          "type": "Medio Tiempo",
+          "url": "https://www.fakejobsite.com/job/4b2015b1",
+          "createdAt": "2023-07-03T12:15:00",
+          "company": "CodeMasters",
+          "companyUrl": "https://www.codemasters.com",
+          "location": "New York, USA",
+          "title": "Software Quality Assurance",
+          "description": "<p>Seeking a Software Quality Assurance specialist to ensure high-quality software...</p>"
+        },
+        {
+          "id": "22c6ccfd-0a2b-419f-9ac9-536d434c6e6f",
+          "type": "Tiempo completo",
+          "url": "https://www.fakejobsite.com/job/22c6ccfd",
+          "createdAt": "2023-07-02T15:45:00",
+          "company": "DataTech Solutions",
+          "companyUrl": "https://www.datatechsolutions.com",
+          "location": "Sydney, Australia",
+          "title": "Big Data Engineer",
+          "description": "<p>Join our team as a Big Data Engineer to design and implement data pipelines...</p>"
+        }
+      ]      
+}

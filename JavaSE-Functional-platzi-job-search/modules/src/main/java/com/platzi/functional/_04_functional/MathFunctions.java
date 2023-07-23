@@ -23,6 +23,7 @@ public class MathFunctions {
 
         Predicate<Integer> isEven = numero -> numero % 2 == 0;
 
+
         isEven.test(5);
 
         Predicate<Student> isPasoPrueba = student -> student.getCalificacion() >= 5.0;
