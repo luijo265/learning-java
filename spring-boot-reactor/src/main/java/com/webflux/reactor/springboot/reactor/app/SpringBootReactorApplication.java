@@ -8,6 +8,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import reactor.core.publisher.Flux;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 public class SpringBootReactorApplication implements CommandLineRunner {
 
@@ -19,6 +22,10 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		ejemploFlatMap();
+	}
+
+	public void ejemploIterable() throws Exception {
 
 		// Flux es un publicador, es decir que cambia de estado y lo siguiente
 		// es un observer que reaccione a ese cambio de estado
@@ -26,13 +33,29 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 //				.map(String::toUpperCase)
 //				.doOnNext(this::validateNombre)
 //				.map(String::toLowerCase)
-		Flux<Usuario> nombres = Flux.just("Luis Cervantes",
+
+		List<String> usuariosList = new ArrayList<>();
+		usuariosList.add("Luis Cervantes");
+		usuariosList.add("Dayana Perez");
+		usuariosList.add("Alex Peñaranda");
+		usuariosList.add("Oswaldo Jimenez");
+		usuariosList.add("Dora Vallejo");
+		usuariosList.add("Piedad Bolivar");
+
+		/*
+		Flux<String> nombres = Flux.just(
+					"Luis Cervantes",
 						"Dayana Perez",
 						"Alex Peñaranda",
 						"Oswaldo Jimenez",
 						"Dora Vallejo",
-						"Piedad Bolivar")
-				.map(this::toUpperCase)
+						"Piedad Bolivar"); // Al separar aquí, ya nombres es un flux diferente y el suscribe llega hasta el ;
+		// hasta aqui nombres es inmutable
+		*/
+
+		Flux<String> nombres = Flux.fromIterable(usuariosList);
+
+		Flux<Usuario> usuarios = nombres.map(this::toUpperCase)
 				.filter(usuario -> filterNombrePorLetras(usuario, "l"))
 				.doOnNext(this::validateUsuario)
 				.map(this::toLowerCase)
@@ -42,17 +65,17 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 		// Para suscribirnos al publisher y ver las operaciones que se ejecutan
 //		nombres.subscribe(logger::info);
 //		nombres.subscribe(logger::info, this::catchError);
-//		nombres.subscribe(
-//				this::showFromSuscribe,
-//				this::catchError,
-//				new Runnable() {
-//					@Override
-//					public void run() {
-//						logger.info("Ha finalizado ejecucion del observable con exito!");
-//					}
-//				}
-//		);
 		nombres.subscribe(
+				this::showFromSuscribe,
+				this::catchError,
+				new Runnable() {
+					@Override
+					public void run() {
+						logger.info("Ha finalizado ejecucion del observable con exito!");
+					}
+				}
+		);
+		usuarios.subscribe(
 				this::showFromSuscribeFluxUsuario,
 				this::catchError,
 				new Runnable() {
@@ -62,6 +85,27 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 					}
 				}
 		);
+
+
+	}
+
+	public void ejemploFlatMap() throws Exception {
+
+		List<String> usuariosList = new ArrayList<>();
+		usuariosList.add("Luis Cervantes");
+		usuariosList.add("Dayana Perez");
+		usuariosList.add("Alex Peñaranda");
+		usuariosList.add("Oswaldo Jimenez");
+		usuariosList.add("Dora Vallejo");
+		usuariosList.add("Piedad Bolivar");
+
+		Flux.fromIterable(usuariosList)
+				.map(this::toUpperCase)
+				.filter(usuario -> filterNombrePorLetras(usuario, "l"))
+				.map(this::toLowerCase)
+				.subscribe(
+						this::showFromSuscribeFluxUsuario
+				);
 
 
 	}
