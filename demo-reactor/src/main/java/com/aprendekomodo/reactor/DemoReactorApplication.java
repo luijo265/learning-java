@@ -1,5 +1,7 @@
 package com.aprendekomodo.reactor;
 
+import com.aprendekomodo.combinacion.Combinacion;
+import com.aprendekomodo.filtrado.Filtrado;
 import com.aprendekomodo.model.Persona;
 import com.aprendekomodo.operador.creacion.Creacion;
 import com.aprendekomodo.operador.transformacion.Transformacion;
@@ -82,10 +84,24 @@ public class DemoReactorApplication implements CommandLineRunner {
 //		appCreacion.repeat();
 
 
-		Transformacion transformacion = new Transformacion();
+//		Transformacion transformacion = new Transformacion();
 //		transformacion.map();
 //		transformacion.mapInmutable();
 //		transformacion.flatMap();
-		transformacion.groupBy();
+//		transformacion.groupBy();
+
+//		Filtrado filtrado = new Filtrado();
+//		filtrado.filter();
+//		filtrado.distinct();
+//		filtrado.take();
+//		filtrado.takeLast();
+//		filtrado.skip();
+//		filtrado.skipLast();
+
+		Combinacion combiancion = new Combinacion();
+//		combiancion.merge();
+//		combiancion.zip();
+		combiancion.zipWith();
+
 	}
 }

@@ -1,5 +1,7 @@
 package com.aprendekomodo.model;
 
+import java.util.Objects;
+
 public class Persona {
 
     private Integer idPersona;
@@ -44,5 +46,17 @@ public class Persona {
 
     public void setEdad(Integer edad) {
         this.edad = edad;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Persona persona)) return false;
+        return idPersona.equals(persona.idPersona);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idPersona);
     }
 }
