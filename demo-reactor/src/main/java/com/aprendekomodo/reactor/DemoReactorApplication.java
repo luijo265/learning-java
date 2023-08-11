@@ -1,7 +1,10 @@
 package com.aprendekomodo.reactor;
 
 import com.aprendekomodo.combinacion.Combinacion;
+import com.aprendekomodo.condicional.Condicional;
+import com.aprendekomodo.error.ErrorOP;
 import com.aprendekomodo.filtrado.Filtrado;
+import com.aprendekomodo.matematico.Matematico;
 import com.aprendekomodo.model.Persona;
 import com.aprendekomodo.operador.creacion.Creacion;
 import com.aprendekomodo.operador.transformacion.Transformacion;
@@ -98,10 +101,28 @@ public class DemoReactorApplication implements CommandLineRunner {
 //		filtrado.skip();
 //		filtrado.skipLast();
 
-		Combinacion combiancion = new Combinacion();
+//		Combinacion combiancion = new Combinacion();
 //		combiancion.merge();
 //		combiancion.zip();
-		combiancion.zipWith();
+//		combiancion.zipWith();
+
+//        ErrorOP errorOP = new ErrorOP();
+//        errorOP.retry();
+//        errorOP.errorReturn();
+//        errorOP.errorResume();
+//        errorOP.errorMap();
+
+//		Condicional condicional = new Condicional();
+//		condicional.defaultIfEmpty();
+//		condicional.takeUntil();
+//		condicional.timeout();
+
+		Matematico matematico = new Matematico();
+//		matematico.average();
+//		matematico.count();
+		matematico.summarizing();
+//		matematico.sum();
+//		matematico.min();
 
 	}
 }
