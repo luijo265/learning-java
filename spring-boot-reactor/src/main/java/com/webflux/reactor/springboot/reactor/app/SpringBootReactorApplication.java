@@ -1,12 +1,15 @@
 package com.webflux.reactor.springboot.reactor.app;
 
+import com.webflux.reactor.springboot.reactor.models.Comentario;
 import com.webflux.reactor.springboot.reactor.models.Usuario;
+import com.webflux.reactor.springboot.reactor.models.UsuarioComentario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +25,66 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ejemploFlatMap();
+		ejemploZipWithRango();
+	}
+
+	public void ejemploZipWithRango() {
+		Flux.just(1,2,3,4)
+				.map(i -> i*2)
+				.zipWith(Flux.range(0, 4), (uno, dos) ->
+						String.format("Primer flux: %d, Segundo flux: %d", uno, dos))
+				.subscribe(texto -> logger.info(texto));
+	}
+
+	public void ejemploUsuarioComentariosZipWithForma2() {
+
+		Mono<Usuario> usuarioMono = Mono.fromCallable(() -> crearUsuario());
+		Mono<Comentario> comentarioUsuarioMono = Mono.fromCallable(() -> crearComentario());
+
+		Mono<UsuarioComentario> usuarioConComentarioMono = usuarioMono.zipWith(comentarioUsuarioMono)
+				.map(tuple -> {
+					Usuario usuario = tuple.getT1();
+					Comentario comentario = tuple.getT2();
+					return new UsuarioComentario(usuario, comentario);
+				});
+
+		usuarioConComentarioMono.subscribe(usuarioComentario -> logger.info(usuarioComentario.toString()));
+
+	}
+
+	public void ejemploUsuarioComentariosZipWith() {
+
+		Mono<Usuario> usuarioMono = Mono.fromCallable(() -> crearUsuario());
+		Mono<Comentario> comentarioUsuarioMono = Mono.fromCallable(() -> crearComentario());
+
+		Mono<UsuarioComentario> usuarioConComentarioMono = usuarioMono.zipWith(comentarioUsuarioMono,
+						(usuario, comentarioUsuario) -> new UsuarioComentario(usuario, comentarioUsuario));
+
+		usuarioConComentarioMono.subscribe(usuarioComentario -> logger.info(usuarioComentario.toString()));
+
+	}
+
+	public void ejemploUsuarioComentariosFlatMap() {
+
+		Mono<Usuario> usuarioMono = Mono.fromCallable(() -> crearUsuario());
+		Mono<Comentario> comentarioUsuarioMono = Mono.fromCallable(() -> crearComentario());
+
+		usuarioMono.flatMap(usuario ->
+				comentarioUsuarioMono.map(comentario -> new UsuarioComentario(usuario, comentario)))
+				.subscribe(usuarioComentario -> logger.info(usuarioComentario.toString()));
+
+	}
+
+	public Comentario crearComentario() {
+		Comentario comentario = new Comentario();
+		comentario.addComentario("Hola menor, tu tu tu");
+		comentario.addComentario("Recoge la basura");
+		comentario.addComentario("Pasa por las cachapas");
+		return comentario;
+	}
+
+	public Usuario crearUsuario() {
+		return new Usuario("Luis", "Marvel");
 	}
 
 	public void ejemploIterable() throws Exception {
@@ -89,6 +151,53 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 
 	}
 
+	public void ejemploToCollectList() throws Exception {
+
+		List<Usuario> usuariosList = new ArrayList<>();
+		usuariosList.add(new Usuario("Luis", "Cervantes"));
+		usuariosList.add(new Usuario("Dayana", "Perez"));
+		usuariosList.add(new Usuario("Alex", "Peñaranda"));
+		usuariosList.add(new Usuario("Oswaldo", "Jimenez"));
+		usuariosList.add(new Usuario("Dora", "Vallejo"));
+		usuariosList.add(new Usuario("Piedad", "Bolivar"));
+
+		Flux.fromIterable(usuariosList)
+				.collectList()
+				.subscribe(listUsuario -> {
+					listUsuario.forEach(item ->logger.info(item.toString()));
+				});
+	}
+
+	public void ejemploToString() throws Exception {
+
+		List<Usuario> usuariosList = new ArrayList<>();
+		usuariosList.add(new Usuario("Luis", "Cervantes"));
+		usuariosList.add(new Usuario("Dayana", "Perez"));
+		usuariosList.add(new Usuario("Alex", "Peñaranda"));
+		usuariosList.add(new Usuario("Oswaldo", "Jimenez"));
+		usuariosList.add(new Usuario("Dora", "Vallejo"));
+		usuariosList.add(new Usuario("Piedad", "Bolivar"));
+
+		Flux.fromIterable(usuariosList)
+				.map(usuario ->
+						usuario.getApellido().toUpperCase()
+							.concat(" ")
+							.concat(usuario.getNombre().toUpperCase())
+				)
+				.flatMap(nombre -> {
+					if (nombre.toLowerCase().contains("j")){
+						return Mono.just(nombre);
+					}
+					return Mono.empty();
+				})
+				.map(String::toLowerCase)
+				.subscribe(
+						this::showFromSuscribe
+				);
+
+
+	}
+
 	public void ejemploFlatMap() throws Exception {
 
 		List<String> usuariosList = new ArrayList<>();
@@ -101,7 +210,12 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 
 		Flux.fromIterable(usuariosList)
 				.map(this::toUpperCase)
-				.filter(usuario -> filterNombrePorLetras(usuario, "l"))
+				.flatMap(usuario -> {
+					if (filterNombrePorLetras(usuario, "l")){
+						return Mono.just(usuario);
+					}
+					return Mono.empty();
+				})
 				.map(this::toLowerCase)
 				.subscribe(
 						this::showFromSuscribeFluxUsuario
