@@ -11,8 +11,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.CountDownLatch;
 
 @SpringBootApplication
 public class SpringBootReactorApplication implements CommandLineRunner {
@@ -25,7 +29,76 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ejemploZipWithRango();
+		ejemploInternvalDesdeCreate();
+	}
+
+	public void ejemploInternvalDesdeCreate() {
+		Flux.create(emitter -> {
+					Timer time = new Timer();
+					time.schedule(new TimerTask() {
+
+						private Integer contador = 0;
+						@Override
+						public void run() {
+							emitter.next(++contador);
+							if (contador == 5) {
+								time.cancel();
+								emitter.complete();
+							}
+							if (contador == 4) {
+								time.cancel();
+								emitter.error(new InterruptedException("Error contador 4"));
+							}
+						}
+					}, 1000, 1000);
+				})
+//				.doOnComplete(() -> logger.info("Hemos terminado"))
+				.subscribe(
+						next -> logger.info(next.toString()),
+						error -> logger.info(error.getMessage()),
+						() -> logger.info("Hemos terminado")
+				);
+		// El complete solo se ejecuta cuando todo el flujo finaliza completamente bien
+	}
+
+	public void ejemploInternvalInfinito() throws InterruptedException {
+
+		CountDownLatch latch = new CountDownLatch(1);
+
+		Flux.interval(Duration.ofSeconds(1))
+				.doOnTerminate(latch::countDown)
+				.flatMap(i -> {
+					if(i >= 5){
+						return Flux.error(new InterruptedException("Solo hasta 5!"));
+					}
+					return Flux.just(i);
+				})
+				.map(i -> "Hola "+i)
+				.retry(1)
+				.subscribe(s -> logger.info(s), e -> logger.error(e.getMessage()));
+
+		latch.await();
+	}
+
+	public void ejemploDelayElements() throws InterruptedException {
+		Flux<Integer> rango = Flux.range(1, 12)
+				.delayElements(Duration.ofSeconds(1))
+				.doOnNext(i -> logger.info(i.toString()));
+
+		rango.subscribe();
+//		rango.blockLast();
+
+		Thread.sleep(13000);
+
+	}
+	public void ejemploInterval() {
+		Flux<Integer> rango = Flux.range(1, 12);
+		Flux<Long> retraso = Flux.interval(Duration.ofSeconds(1));
+
+		rango.zipWith(retraso, (rangoSource, retrasoSource) -> rangoSource)
+				.doOnNext(i -> logger.info(i.toString()))
+				.blockLast();
+//				.subscribe();
 	}
 
 	public void ejemploZipWithRango() {
