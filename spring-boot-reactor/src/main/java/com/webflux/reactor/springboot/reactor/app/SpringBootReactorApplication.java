@@ -3,6 +3,8 @@ package com.webflux.reactor.springboot.reactor.app;
 import com.webflux.reactor.springboot.reactor.models.Comentario;
 import com.webflux.reactor.springboot.reactor.models.Usuario;
 import com.webflux.reactor.springboot.reactor.models.UsuarioComentario;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -29,8 +31,54 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ejemploInternvalDesdeCreate();
+        ejemploContraPresion2();
 	}
+
+    public void ejemploContraPresion2(){
+        Flux.range(1, 10)
+                .log()
+                .limitRate(5)
+                .subscribe(i -> logger.info(i.toString()));
+    }
+
+    public void ejemploContraPresion(){
+        Flux.range(1, 10)
+                .log()
+                .subscribe(new Subscriber<Integer>() {
+
+                    private Subscription subscription;
+
+                    private Integer limite = 5;
+
+                    private Integer consumido = 0;
+
+                    @Override
+                    public void onSubscribe(Subscription subscription) {
+                        this.subscription = subscription;
+                        this.subscription.request(limite);
+                    }
+
+                    @Override
+                    public void onNext(Integer integer) {
+                        logger.info(integer.toString());
+                        consumido++;
+                        if (consumido == limite){
+                            consumido = 0;
+                            this.subscription.request(limite);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 
 	public void ejemploInternvalDesdeCreate() {
 		Flux.create(emitter -> {
