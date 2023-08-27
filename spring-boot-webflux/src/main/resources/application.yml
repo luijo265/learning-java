@@ -1,0 +1,13 @@
+# mongodb
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: webflux_udemy
+      username: root
+      password: develop
+      authentication-database: admin
+  thymeleaf:
+    reactive:
+      max-chunk-size: 100
